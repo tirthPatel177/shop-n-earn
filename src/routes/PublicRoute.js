@@ -14,9 +14,9 @@ export const PublicRoute = () => {
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/" element={<Home />} />
         <Route exact path="/shop/:id" element={<ShopDetails />} />
+          <Route exact path="/dashboard" element={<Dashboard />} />
 
         <Route exact path="/" element={<PrivateRoute />}>
-          <Route exact path="/dashboard" element={<Dashboard />} />
           <Route exact path="/payment" element={<Payment />} />
         </Route>
       </Routes>
