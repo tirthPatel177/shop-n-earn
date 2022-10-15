@@ -1,10 +1,10 @@
-import { Router } from 'react-router-dom';
-import './App.css';
+import "./App.css";
+import { PublicRoute } from "./routes/PublicRoute";
 
 function App() {
   return (
     <>
-      <Router />
+      <PublicRoute />
     </>
   );
 }
