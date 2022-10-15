@@ -14,7 +14,7 @@ const LandingHeader = () => {
                             </p>
                         </a>
                     <div>
-                        <a href="https://app.finplan.io/auth/login/">
+                        <a href="/login">
                             <p className='text-text1 font-medium text-xl rounded-md bg-primary px-3 py-2'>
                                 Get started
                             </p>
