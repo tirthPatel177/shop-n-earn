@@ -9,6 +9,18 @@ const theme = createTheme({
       contrastText: colors.text1,
     },
   },
+  components: {
+    // Name of the component
+    MuiButton: {
+      styleOverrides: {
+        // Name of the slot
+        root: {
+          // Some CSS
+          textTransform: "none",
+        },
+      },
+    },
+  },
 });
 
 export default theme;
