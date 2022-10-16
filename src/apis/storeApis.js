@@ -18,3 +18,20 @@ export const getAllStore = async () => {
     });
   return result;
 };
+
+export const getRecentTransactions = async (data) => {
+  let header = await authHeader();
+  const result = await axios
+    .get(config.apiEndPoint + "api/transaction/getStore", {
+      params: { store: data._id },
+      headers: header,
+    })
+    .then((res) => {
+      console.log("success api called", res);
+      return res.data;
+    })
+    .catch((error) => {
+      return false;
+    });
+  return result;
+};
