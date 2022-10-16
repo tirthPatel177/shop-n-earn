@@ -6,7 +6,7 @@ export const getAllStore = async () => {
   let header = await authHeader();
 
   const result = await axios
-    .get(config.apiEndPoint + "api/store/get", {
+    .get(config.apiEndPoint + "api/store/getStoreUser", {
       headers: header,
     })
     .then((res) => {

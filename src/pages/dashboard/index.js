@@ -1,11 +1,18 @@
 import { Button } from "@mui/material";
-import { GrowthIcon, MultiUserIcon, RupeeIcon, ShopIcon, UserIcon } from "../../assets/icons";
+import {
+  GrowthIcon,
+  MultiUserIcon,
+  RupeeIcon,
+  ShopIcon,
+  UserIcon,
+} from "../../assets/icons";
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllStore } from "../../apis/storeApis";
 import Header from "../../headers";
 import { setToast } from "../../redux/slices/toastSlice";
 import "./style.css";
+import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
   // const [user, setUser] = useState(false);
@@ -13,6 +20,9 @@ const Dashboard = () => {
   console.log(user);
   const [stores, setstores] = useState([]);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleShopClick = () => {};
 
   const fetchAllStore = async () => {
     const result = await getAllStore();
@@ -27,10 +37,8 @@ const Dashboard = () => {
       return;
     }
     console.log("result", result);
-    setstores(result?.stores);
+    setstores(result?.data);
   };
-
-  console.log("stores", stores);
 
   useEffect(() => {
     fetchAllStore();
@@ -59,7 +67,11 @@ const Dashboard = () => {
                     <div className="mt-2">
                       <div
                         className="px-4 py-1 grid grid-cols-3 rounded-md"
-                        style={{ boxShadow: "1px 1px 10px #cecbcb" }}
+                        style={{
+                          boxShadow: "1px 1px 10px #cecbcb",
+                          cursor: "pointer",
+                        }}
+                        onClick={() => navigate(`/shopDetails/${store._id}`)}
                       >
                         <img
                           src="https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bGVuc3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60"
@@ -68,12 +80,14 @@ const Dashboard = () => {
                         />
                         <div>
                           <h3 className="font-bold text-text1">
-                            {store?.name}
+                            {store?.storeName}
                           </h3>
                         </div>
 
                         <div>
-                          <h3 className="font-bold text-text1">Shop Name</h3>
+                          <h3 className="font-bold text-text1">
+                            {store?.tier}
+                          </h3>
                         </div>
                       </div>
                     </div>
@@ -110,12 +124,14 @@ const Dashboard = () => {
                           />
                           <div>
                             <h3 className="font-bold text-text1">
-                              {store?.name}
+                              {store?.storeName}
                             </h3>
                           </div>
 
                           <div>
-                            <h3 className="font-bold text-text1">Shop Name</h3>
+                            <h3 className="font-bold text-text1">
+                              {store?.tier}
+                            </h3>
                           </div>
                         </div>
                       </div>
@@ -231,10 +247,8 @@ const Dashboard = () => {
               </div>
 
               <div className="w-full flex justify-end mt-6 px-4">
-                  <Button variant="contained">
-                    Download CSV
-                  </Button>
-                </div>
+                <Button variant="contained">Download CSV</Button>
+              </div>
             </div>
           </div>
           <div className="flex items-center justify-center">
@@ -328,11 +342,8 @@ const Dashboard = () => {
                 </div>
 
                 <div className="w-full flex justify-end mt-6 px-4">
-                  <Button variant="contained">
-                    Download CSV
-                  </Button>
+                  <Button variant="contained">Download CSV</Button>
                 </div>
-
               </div>
             </div>
           </div>
