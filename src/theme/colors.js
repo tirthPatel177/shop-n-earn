@@ -4,6 +4,7 @@ const colors = {
   text1: "#201e23",
   white: "#FFFFFF",
   background: "",
+  bg2: "#ebebeb"
 };
 
 export default colors;
