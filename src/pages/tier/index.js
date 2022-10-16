@@ -13,6 +13,7 @@ import {
 } from "@mui/material";
 import React, { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { createTier } from "../../apis/auth";
 import Header from "../../headers";
 import colors from "../../theme/colors";
@@ -47,14 +48,15 @@ const Tier = () => {
     amountToCoinRatio: 0,
     coinToAmountRatio: 0
   });
-
+  const navigate = useNavigate();
   const handleSubmit = async () => {
       const result = await createTier({
           ...tier,
           shopId: user._id
       })
       if(result){
-          console.log(result);
+        console.log(result);
+        navigate("/dashboard");
       }
   }
 
