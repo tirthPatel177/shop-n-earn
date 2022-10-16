@@ -28,7 +28,7 @@ const Dashboard = () => {
       return;
     }
     console.log("result", result);
-    setstores(result?.stores);
+    setstores(result?.data);
   };
 
   const fetchData = async () => {
@@ -89,12 +89,12 @@ const Dashboard = () => {
                         />
                         <div>
                           <h3 className="font-bold text-text1">
-                            {store?.name}
+                            {store?.storeName}
                           </h3>
                         </div>
 
                         <div>
-                          <h3 className="font-bold text-text1">Shop Name</h3>
+                          <h3 className="font-bold text-text1">{store?.tier}</h3>
                         </div>
                       </div>
                     </div>
@@ -131,12 +131,12 @@ const Dashboard = () => {
                           />
                           <div>
                             <h3 className="font-bold text-text1">
-                              {store?.name}
+                              {store?.storeName}
                             </h3>
                           </div>
 
                           <div>
-                            <h3 className="font-bold text-text1">Shop Name</h3>
+                            <h3 className="font-bold text-text1">{store.tier}</h3>
                           </div>
                         </div>
                       </div>
