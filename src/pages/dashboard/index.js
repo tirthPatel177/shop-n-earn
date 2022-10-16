@@ -1,14 +1,17 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import { GrowthIcon, MultiUserIcon, RupeeIcon, ShopIcon, UserIcon } from "../../assets/icons";
 import Header from "../../headers";
 import "./style.css";
 
 const Dashboard = () => {
-  const [user, setUser] = useState(false);
+  // const [user, setUser] = useState(false);
+  const user = useSelector(state => state.user);
+  console.log(user)
   return (
     <div>
       <Header />
-      {user ? (
+      {user.isStore ? (
         <div>
           <div className="mobileView">
             <div className="">

@@ -9,6 +9,7 @@ import ShopDetails from "../pages/shopDetails";
 import EditShopDetails from "../pages/editShopDetails";
 
 export const PublicRoute = () => {
+    
   return (
     <Router>
       <Routes>
