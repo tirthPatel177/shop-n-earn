@@ -2,7 +2,7 @@ import { Button } from "@mui/material";
 import { GrowthIcon, MultiUserIcon, RupeeIcon, ShopIcon, UserIcon } from "../../assets/icons";
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllStore } from "../../apis/storeApis";
+import { getAllStore, getRecentTransactions } from "../../apis/storeApis";
 import Header from "../../headers";
 import { setToast } from "../../redux/slices/toastSlice";
 import "./style.css";
@@ -12,6 +12,7 @@ const Dashboard = () => {
   const user = useSelector((state) => state.user?.userDetails);
   console.log(user);
   const [stores, setstores] = useState([]);
+  const [transactions, setTransactions] = useState([""]);
   const dispatch = useDispatch();
 
   const fetchAllStore = async () => {
@@ -30,10 +31,30 @@ const Dashboard = () => {
     setstores(result?.stores);
   };
 
+  const fetchData = async () => {
+    const result = await getRecentTransactions(user._id);
+    if (result === false) {
+      dispatch(
+        setToast({
+          message: "Something went wrong",
+          type: "error",
+          status: true,
+        })
+      );
+      return;
+    }
+    console.log("result", result);
+    setTransactions(result?.stores);
+  };
+
   console.log("stores", stores);
 
   useEffect(() => {
-    fetchAllStore();
+    if (user?.isStore === undefined) {
+      fetchAllStore();
+    } else {
+      fetchData();
+    }
   }, []);
 
   return (
@@ -160,7 +181,7 @@ const Dashboard = () => {
                     <MultiUserIcon />
                   </div>
                   <p className="text-xs">Total customers</p>
-                  <p className="text-xl text-primary font-bold">25</p>
+                  <p className="text-xl text-primary font-bold">8</p>
                 </div>
                 <div
                   className="p-4 text-center rounded-md "
@@ -170,7 +191,7 @@ const Dashboard = () => {
                     <RupeeIcon />
                   </div>
                   <p className="text-xs">Total transaction</p>
-                  <p className="text-xl text-primary font-bold">25</p>
+                  <p className="text-xl text-primary font-bold">30</p>
                 </div>
                 <div
                   className="p-4 text-center rounded-md "
@@ -179,8 +200,8 @@ const Dashboard = () => {
                   <div className="flex justify-center items-center">
                     <UserIcon />
                   </div>
-                  <p className="text-xs">Total customers</p>
-                  <p className="text-xl text-primary font-bold">25</p>
+                  <p className="text-xs">Total customers (this month)</p>
+                  <p className="text-xl text-primary font-bold">4</p>
                 </div>
                 <div
                   className="p-4 text-center rounded-md "
@@ -189,52 +210,59 @@ const Dashboard = () => {
                   <div className="flex justify-center items-center">
                     <ShopIcon />
                   </div>
-                  <p className="text-xs">Total customers</p>
-                  <p className="text-xl text-primary font-bold">25</p>
+                  <p className="text-xs">Total transactions (this month)</p>
+                  <p className="text-xl text-primary font-bold">10</p>
                 </div>
               </div>
 
               <div className="mt-4 mx-4">
                 <h2 className=" font-bold text-xl">Recent Transactions</h2>
 
-                <div className="mt-2">
-                  <div
-                    className="px-4 py-1 rounded-md grid grid-cols-2"
-                    style={{ boxShadow: "1px 1px 10px #cecbcb" }}
-                  >
-                    <div>
-                      <p className="text-text2 text-xs">Name</p>
-                      <p className="font-semibold text-sm">Tirth Patel</p>
-                    </div>
-                    <div>
-                      <p className="text-text2 text-xs">Amount</p>
-                      <p className="font-semibold text-sm">25 /-</p>
-                    </div>
-                    <div>
-                      <p className="text-text2 text-xs">Upi id</p>
-                      <p
-                        className="font-semibold text-sm overflow-hidden"
-                        style={{
-                          textOverflow: "ellipsis",
-                          whiteSpace: "nowrap",
-                        }}
-                      >
-                        12334823423423
-                      </p>
-                    </div>
-                    <div>
-                      <p className="text-text2 text-xs">Time</p>
-                      <p className="font-semibold text-sm">25th August, 2022</p>
-                    </div>
-                  </div>
+                <div>
+                  {transactions.map((tra) => {
+                    return (
+                      <div className="mt-2">
+                        <div
+                          className="px-4 py-1 rounded-md grid grid-cols-2"
+                          style={{ boxShadow: "1px 1px 10px #cecbcb" }}
+                        >
+                          <div>
+                            <p className="text-text2 text-xs">Name</p>
+                            <p className="font-semibold text-sm">Name</p>
+                          </div>
+                          <div>
+                            <p className="text-text2 text-xs">Amount</p>
+                            <p className="font-semibold text-sm">25 /-</p>
+                          </div>
+                          <div>
+                            <p className="text-text2 text-xs">Upi id</p>
+                            <p
+                              className="font-semibold text-sm overflow-hidden"
+                              style={{
+                                textOverflow: "ellipsis",
+                                whiteSpace: "nowrap",
+                              }}
+                            >
+                              12334823423423
+                            </p>
+                          </div>
+                          <div>
+                            <p className="text-text2 text-xs">Time</p>
+                            <p className="font-semibold text-sm">25th August, 2022</p>
+                          </div>
+                        </div>
+                      </div>
+                    )
+                  })}
+
                 </div>
               </div>
 
               <div className="w-full flex justify-end mt-6 px-4">
-                  <Button variant="contained">
-                    Download CSV
-                  </Button>
-                </div>
+                <Button variant="contained">
+                  Download CSV
+                </Button>
+              </div>
             </div>
           </div>
           <div className="flex items-center justify-center">
@@ -270,7 +298,7 @@ const Dashboard = () => {
                       <MultiUserIcon />
                     </div>
                     <p className="text-xs">Total customers</p>
-                    <p className="text-xl text-primary font-bold">25</p>
+                    <p className="text-xl text-primary font-bold">8</p>
                   </div>
                   <div
                     className="p-4 text-center rounded-md "
@@ -280,7 +308,7 @@ const Dashboard = () => {
                       <RupeeIcon />
                     </div>
                     <p className="text-xs">Total transaction</p>
-                    <p className="text-xl text-primary font-bold">25</p>
+                    <p className="text-xl text-primary font-bold">30</p>
                   </div>
                   <div
                     className="p-4 text-center rounded-md "
@@ -289,8 +317,8 @@ const Dashboard = () => {
                     <div className="flex justify-center items-center">
                       <UserIcon />
                     </div>
-                    <p className="text-xs">Total customers</p>
-                    <p className="text-xl text-primary font-bold">25</p>
+                    <p className="text-xs">Total customers (this month)</p>
+                    <p className="text-xl text-primary font-bold">4</p>
                   </div>
                   <div
                     className="p-4 text-center rounded-md "
@@ -299,8 +327,8 @@ const Dashboard = () => {
                     <div className="flex justify-center items-center">
                       <ShopIcon />
                     </div>
-                    <p className="text-xs">Total customers</p>
-                    <p className="text-xl text-primary font-bold">25</p>
+                    <p className="text-xs">Total transaction (this month)</p>
+                    <p className="text-xl text-primary font-bold">10</p>
                   </div>
                 </div>
 
