@@ -33,22 +33,10 @@ const names = [
 const Tier = () => {
   const greaterThan600 = useMediaQuery("(min-width:600px)");
   const [personName, setPersonName] = React.useState([]);
-  const user = useSelector(state => state.user);
+  const user = useSelector(state => state.user?.userDetails);
   useEffect(() => {
     console.log(user)
   }, [user])
-  
-  const fileUploadRef = useRef(null);
-
-  const handleChange = (event) => {
-    const {
-      target: { value },
-    } = event;
-    setPersonName(
-      // On autofill we get a stringified value.
-      typeof value === "string" ? value.split(",") : value
-    );
-  };
 
   const [tier, setTier] = useState({
     name: "",
@@ -63,7 +51,7 @@ const Tier = () => {
   const handleSubmit = async () => {
       const result = await createTier({
           ...tier,
-          shopId: { type: user._id, ref: "Store" }
+          shopId: user._id
       })
       if(result){
           console.log(result);
