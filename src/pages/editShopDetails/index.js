@@ -12,6 +12,7 @@ import {
   useMediaQuery,
 } from "@mui/material";
 import React, { useRef } from "react";
+import Header from "../../headers";
 import colors from "../../theme/colors";
 
 const names = [
@@ -44,6 +45,16 @@ const EditShopDetails = () => {
 
   return (
     <>
+      <Header />
+      <div className="mx-auto" style={{ maxWidth: "1400px" }}>
+        <div className="bg-primary md:bg-white flex items-center justify-center">
+          <div className="w-full mx-4">
+            <h1 className="text-xl md:text-3xl font-bold mt-0 pb-6">
+              Edit Shop Details
+            </h1>
+          </div>
+        </div>
+      </div>
       <div
         style={{
           maxWidth: "1400px",
@@ -52,7 +63,6 @@ const EditShopDetails = () => {
           paddingBottom: "50px",
         }}
       >
-        <h2>Edit Shop Details</h2>
         <form
           style={{
             maxWidth: "500px",

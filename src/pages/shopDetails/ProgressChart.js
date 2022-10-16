@@ -10,8 +10,8 @@ const COLORS = ['#f3ce3a', '#00C49F'];
 export default class ProgressChart extends PureComponent{
   render() {
     return (
-      <>
-      <PieChart width={800} height={400} onMouseEnter={this.onPieEnter}>
+      <div>
+      <PieChart width={200} height={300} onMouseEnter={this.onPieEnter}>
         <Pie
           data={data}
           innerRadius={60}
@@ -24,11 +24,10 @@ export default class ProgressChart extends PureComponent{
             ))}
         </Pie>
       </PieChart>
-
       <div>
-        <p></p>
+        <p>Progress </p>
       </div>
-            </>
+      </div>
     );
   }
 };

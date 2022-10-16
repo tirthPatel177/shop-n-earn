@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import { Button, useMediaQuery } from "@mui/material";
 import React from "react";
+import Header from "../../headers";
 import colors from "../../theme/colors";
 import Nav from "./Nav";
 import ProgressChart from "./ProgressChart";
@@ -10,6 +11,17 @@ const ShopDetails = () => {
   const greaterThan600 = useMediaQuery("(min-width:600px)");
   return (
     <>
+      <Header />
+      <div className="mx-auto" style={{ maxWidth: "1400px" }}>
+        <div className="bg-primary md:bg-white flex items-center justify-center">
+          <div className="w-full mx-4">
+            <h1 className="text-xl md:text-3xl font-bold mt-0 pb-6">
+              Edit Shop Details
+            </h1>
+          </div>
+        </div>
+      </div>
+
       <div
         style={{
           maxWidth: "1400px",
@@ -22,7 +34,7 @@ const ShopDetails = () => {
         <SectionTitle>
           Reward Tokens: <span>0</span> Tokens
         </SectionTitle>
-        <div>
+        <div className="flex items-center justify-center">
           <ProgressChart />
         </div>
         <SectionTitle>Current Tier</SectionTitle>
