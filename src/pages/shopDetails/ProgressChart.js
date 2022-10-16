@@ -24,8 +24,10 @@ export default class ProgressChart extends PureComponent{
             ))}
         </Pie>
       </PieChart>
-      <div>
-        <p>Progress </p>
+      <div className='flex items-center font-bold text-xl'>
+        <p className='mr-4'>Progress</p>
+        <div className='bg-primary mr-2 w-3 h-3'></div>
+        <p>90%</p>
       </div>
       </div>
     );

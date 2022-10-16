@@ -26,7 +26,7 @@ const Dashboard = () => {
                 <div className="mt-2">
                   <div
                     className="px-4 py-1 grid grid-cols-3 rounded-md"
-                    style={{ boxShadow: "1px 1px 10px gray" }}
+                    style={{ boxShadow: "1px 1px 10px #cecbcb" }}
                   >
                     <img
                       src="https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bGVuc3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60"
@@ -58,7 +58,7 @@ const Dashboard = () => {
                   <h2 className=" font-bold text-xl">List of shops</h2>
 
                   <div className="mt-2">
-                    <div className="px-4 py-1 grid grid-cols-3 rounded-md" style={{ boxShadow: "1px 1px 10px gray" }}>
+                    <div className="px-4 py-1 grid grid-cols-3 rounded-md" style={{ boxShadow: "1px 1px 10px #cecbcb" }}>
                       <img
                         src="https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bGVuc3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60"
                         alt=""
