@@ -5,7 +5,6 @@ import Header from "../../headers";
 import colors from "../../theme/colors";
 import Nav from "./Nav";
 import ProgressChart from "./ProgressChart";
-import Tier from "./Tier";
 import img1 from "./../../assets/Success-factors-amico.png"
 import img2 from "./../../assets/coin.png"
 import img3 from "./../../assets/Success-factors-bro.png"

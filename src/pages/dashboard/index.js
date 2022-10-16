@@ -1,3 +1,4 @@
+import { Button } from "@mui/material";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { GrowthIcon, MultiUserIcon, RupeeIcon, ShopIcon, UserIcon } from "../../assets/icons";
@@ -184,6 +185,12 @@ const Dashboard = () => {
                   </div>
                 </div>
               </div>
+
+              <div className="w-full flex justify-end mt-6 px-4">
+                  <Button variant="contained">
+                    Download CSV
+                  </Button>
+                </div>
             </div>
           </div>
           <div className="flex items-center justify-center">
@@ -254,6 +261,12 @@ const Dashboard = () => {
                       <p className="text-xs">23 august, 2022 </p>
                     </div>
                   </div>
+                </div>
+
+                <div className="w-full flex justify-end mt-6 px-4">
+                  <Button variant="contained">
+                    Download CSV
+                  </Button>
                 </div>
 
               </div>

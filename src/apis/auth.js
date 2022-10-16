@@ -54,3 +54,17 @@ export const registerStore = async (data) => {
     });
   return result;
 };
+
+
+export const createTier = async (data) => {
+  const result = await axios
+    .post(config.apiEndPoint + "api/tier/create", data)
+    .then((res) => {
+      console.log("success api called", res);
+      return res.data;
+    })
+    .catch((error) => {
+      return false;
+    });
+  return result;
+};

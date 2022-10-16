@@ -7,6 +7,7 @@ import Payment from "../pages/payment";
 import { PrivateRoute } from "./PrivateRoute";
 import ShopDetails from "../pages/shopDetails";
 import EditShopDetails from "../pages/editShopDetails";
+import Tier from "../pages/tier";
 
 export const PublicRoute = () => {
     
@@ -17,6 +18,7 @@ export const PublicRoute = () => {
         <Route exact path="/" element={<Home />} />
         <Route exact path="/shop/:id" element={<ShopDetails />} />
         <Route exact path="/dashboard" element={<Dashboard />} />
+        <Route exact path="/addTier" element={<Tier />} />
         <Route
           exact
           path="/editShopDetails/:id"
