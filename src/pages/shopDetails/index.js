@@ -42,7 +42,6 @@ const ShopDetails = () => {
             "Offer 1",
             "Offer 2",
             "Offer 3",
-         
             "Offer 2",
             "Offer 3",
           ].map((offer) => {
