@@ -1,6 +1,7 @@
 import React from "react";
 import LandingHeader from "../../headers/landingHeader";
-import { Button} from "@mui/material";
+import { Button } from "@mui/material";
+import img1 from "./../../assets/Cash Payment-pana.png"
 
 const LandingPage = () => {
   return (
@@ -11,8 +12,8 @@ const LandingPage = () => {
 
       <div className="flex items-center justify-center">
         <div style={{ maxWidth: "1400px" }}>
-          <div className='mt-10 px-16 flex items-center justify-center'>
-            <div className='flex flex-col md:flex-row items-center'>
+          <div className='mt-4 px-4 md:px-16 flex items-center justify-center'>
+            <div className='flex flex-col-reverse md:flex-row items-center'>
               <div className="w-full md:w-1/2">
                 <div className='text-center md:text-left'>
                   <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold">An Intelligent Loyalty Club for Your Local Business</h1>
@@ -25,8 +26,8 @@ const LandingPage = () => {
                 </div>
               </div>
               <div className='w-full md:w-1/2 flex items-center justify-center'>
-                <div className=''>
-                  image
+                <div className="">
+                  <img className="w-10/12 mx-auto" src={img1} alt="image" />
                 </div>
               </div>
             </div>

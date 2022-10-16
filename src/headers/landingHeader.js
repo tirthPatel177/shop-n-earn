@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { CrossIcon, NavIcon } from '../assets/icons';
 import { Button } from "@mui/material";
 import "./style.css"
+import logo1 from "./../assets/shop-n-earn-1.png";
 
 const LandingHeader = () => {
     const [open, setOpen] = useState(false);
@@ -10,9 +11,7 @@ const LandingHeader = () => {
             <div className="w-full" style={{ maxWidth: "1400px" }}>
                 <div className="flex justify-between items-center py-2 ">
                     <a href="/">
-                        <p className='text-text1 font-bold'>
-                            logo
-                        </p>
+                    <img src={logo1} alt="logo" className="h-20 w-20" />
                     </a>
                     <div>
                         <a href="/login">
