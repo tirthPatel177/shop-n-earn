@@ -1,4 +1,5 @@
 import axios from "axios";
+import authHeader from "../config/authHeader";
 import config from "./../config";
 
 export const loginUser = async (data) => {
@@ -57,8 +58,11 @@ export const registerStore = async (data) => {
 
 
 export const createTier = async (data) => {
+  let header = await authHeader();
   const result = await axios
-    .post(config.apiEndPoint + "api/tier/create", data)
+    .post(config.apiEndPoint + "api/tier/create", data, {
+      headers: header,
+    })
     .then((res) => {
       console.log("success api called", res);
       return res.data;
